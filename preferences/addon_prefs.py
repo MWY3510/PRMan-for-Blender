@@ -23,9 +23,9 @@
 #
 # ##### END MIT LICENSE BLOCK #####
 
-import bpy
 import sys
 import os
+import bpy
 from bpy.types import AddonPreferences
 from bpy.props import BoolProperty, StringProperty
 from bpy.props import EnumProperty
@@ -38,11 +38,11 @@ OUT_PATH = 'C:/tmp/renderman_for_blender/{blend}' if sys.platform == ("win32") e
     '/tmp/renderman_for_blender/{blend}'
 
 class PRManAddonPrefs(AddonPreferences):
-    ''' Addon prefences with it's own draw function'''
+    """ Addon prefences with it's own draw function"""
     bl_idname = __package__.split('.')[0] # to match upper addon name
 
     def find_installed_rendermans(self, context):
-        ''' populate the enum for installed rendermans '''
+        """ populate the enum for installed rendermans """
         options = [('NEWEST', 'Newest Version Installed',
                     'Automatically updates when new version installed.')]
         for vers, path in get_installed_rendermans():

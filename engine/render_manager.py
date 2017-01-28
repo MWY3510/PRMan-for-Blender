@@ -25,11 +25,11 @@
 
 import os
 import os.path
-import bpy
 import time
 import traceback
 import subprocess
 import asyncio
+import bpy
 
 from ..util.util import get_addon_prefs, init_env, user_path, get_path_list_converted, find_it_path
 #from .dspy_server import DisplayServer
@@ -38,8 +38,8 @@ PRMAN_INITED = False
 
 
 def init_prman():
-    ''' import prman and mark it as inited.  This is important to make sure we are not
-    making calls from multiple threads to ri '''
+    """ import prman and mark it as inited.  This is important to make sure we are not
+    making calls from multiple threads to ri """
     global prman
     import prman
     global PRMAN_INITED 
@@ -50,7 +50,7 @@ class RenderManager(object):
     """ RenderManager takes care of all the actual work for rib gen,
     and has hooks to launch processes"""
     def __init__(self, scene, engine=None, is_interactive=False, external_render=False):
-        ''' Instantiate the Render Manager and set the variables needed for it '''
+        """ Instantiate the Render Manager and set the variables needed for it """
         self.scene = scene
         self.engine = engine
         # set the display driver
@@ -77,7 +77,7 @@ class RenderManager(object):
         self.ri = None
 
     def __del__(self):
-        ''' Delete and cleanup prman if it's inited.  This is so there isn't threading issues.'''
+        """ Delete and cleanup prman if it's inited.  This is so there isn't threading issues."""
         if self.is_interactive and self.is_prman_running():
             self.ri.EditWorldEnd()
             self.ri.End()
@@ -85,7 +85,7 @@ class RenderManager(object):
             prman.Cleanup()
 
     def reset(self, scene):
-        ''' Reset prman and reinstantiate it.'''
+        """ Reset prman and reinstantiate it."""
         if PRMAN_INITED:
             prman.Cleanup()
         self.scene = scene

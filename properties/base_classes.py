@@ -1,43 +1,43 @@
 import bpy
 from bpy.props import *
 
-''' Base classes that Object, Mesh, Lamp, etc property groups should subclass ''' 
+""" Base classes that Object, Mesh, Lamp, etc property groups should subclass """
 
 class RendermanBasePropertyGroup(bpy.types.PropertyGroup):
-    ''' Base class, to be used for scene properties'''
+    """ Base class, to be used for scene properties"""
     def to_rib(self, ri, **kwargs):
-        ''' Convert this item to ri calls ''' 
+        """ Convert this item to ri calls """ 
         pass
 
     def get_archive_filename(self, **kwargs):
-        ''' get the name of the rib archive for this item '''
+        """ get the name of the rib archive for this item """
         pass
 
 
 class RendermanPropertyGroup(RendermanBasePropertyGroup):
-    '''Anything other than scene should subclass this class and implement these functions'''
+    """Anything other than scene should subclass this class and implement these functions"""
 
     motion_data = None
 
     def cache_motion(self):
-        ''' Update the motion_data member with the motion data at current scene time '''
+        """ Update the motion_data member with the motion data at current scene time """
         pass
 
     def clear_motion(self):
-        ''' free anything in motion_data '''
+        """ free anything in motion_data """
         self.motion_data = None
 
     def check_motion(self):
-        ''' verify that motion_data is not none and item is actually in motion, 
-        clear if it's not. '''
+        """ verify that motion_data is not none and item is actually in motion, 
+        clear if it's not. """
         pass
 
     def get_data_items(self):
-        ''' get the data blocks attached to this object, for example meshes or particles'''
+        """ get the data blocks attached to this object, for example meshes or particles"""
         pass
 
     def has_motion(self):
-        ''' check if item has motion'''
+        """ check if item has motion"""
         return False
 
     motion_blur = BoolProperty(

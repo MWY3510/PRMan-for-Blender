@@ -47,9 +47,19 @@ bl_info = {
 
 # register the module and subclasses
 def register():
+    """
+    Registers all other modules for the PRMan-for-Blender addon.
+
+    Called when Blender registers its addons at startup.
+    """
     bpy.utils.register_module(__name__)
     # add the pointer properties to things
     properties.add_properties()
 
 def unregister():
+    """
+    Cleans up and unregisters all modules that were registered in the register function.
+
+    Called when Blender is shutting down.
+    """
     bpy.utils.unregister_module(__name__)

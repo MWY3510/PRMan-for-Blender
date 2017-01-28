@@ -10,16 +10,16 @@ class RendermanRenderEngine(bpy.types.RenderEngine):
     bl_use_save_buffers = True
 
     def __init__(self):
-        ''' Create the Engine and a renderpass '''
+        """ Create the Engine and a renderpass """
         self.render_pass = None
 
     def __del__(self):
-        ''' Delete the RenderEngine and render pass '''
+        """ Delete the RenderEngine and render pass """
         if hasattr(self, "render_pass") and self.render_pass:
             del self.render_pass
 
     def update(self, data, scene):
-        ''' Update the render pass to the current scene, and tell it to write rib out '''
+        """ Update the render pass to the current scene, and tell it to write rib out """
         if not self.render_pass:
             self.render_pass = RenderManager(scene, engine=self)
         else:
@@ -29,12 +29,12 @@ class RendermanRenderEngine(bpy.types.RenderEngine):
         self.render_pass.write_rib()
 
     def render(self, scene):
-        ''' Start the render '''
+        """ Start the render """
         if self.render_pass:
             self.render_pass.render()
 
     def view_update(self, context=None):
-        ''' If this is a viewport render update any data via the render pass. '''
+        """ If this is a viewport render update any data via the render pass. """
         scene = context.scene
         if not self.render_pass:
             self.render_pass = RenderManager(scene, engine=self, is_interactive=True)
@@ -42,5 +42,5 @@ class RendermanRenderEngine(bpy.types.RenderEngine):
             self.render_pass.ipr_update(context.scene)
 
     def view_draw(self, context=None):
-        ''' Tell the Render Pass to continually update display until further notice '''
+        """ Tell the Render Pass to continually update display until further notice """
         self.render_pass.ipr_draw_view(self)

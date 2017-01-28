@@ -1,10 +1,10 @@
 import os
 from .base_classes import RendermanPropertyGroup
 
-''' Mesh Properties ''' 
+""" Mesh Properties """ 
 
 def get_mesh(mesh, get_normals=False):
-    ''' returns the nverts, verts, P, N from a mesh for doing rib gen ''' 
+    """ returns the nverts, verts, P, N from a mesh for doing rib gen """
     nverts = []
     verts = []
     P = []
@@ -29,13 +29,13 @@ def get_mesh(mesh, get_normals=False):
     return (nverts, verts, P, N)
 
 class RendermanMeshSettings(RendermanPropertyGroup):
-    ''' Mesh Properties, also handles ribgen for mesh data ''' 
+    """ Mesh Properties, also handles ribgen for mesh data """
     ### mesh properties ###
 
     ### overrides of base class methods ###
     def to_rib(self, ri, **kwargs):
-        ''' Uses cached motion data for rib gen if deforming, 
-            else gets the mesh data and does rib gen '''
+        """ Uses cached motion data for rib gen if deforming, 
+            else gets the mesh data and does rib gen """
         ob = kwargs['ob']
         scene = kwargs['scene']
         mesh = ob.to_mesh(scene, True, 'RENDER', calc_tessface=False, calc_undeformed=True)
@@ -48,7 +48,7 @@ class RendermanMeshSettings(RendermanPropertyGroup):
         ri.PointsPolygons(nverts, verts, primvars)
 
     def get_archive_filename(self, **kwargs):
-        ''' returns the name of file to save this archive to '''
+        """ returns the name of file to save this archive to """
         path = kwargs['paths']['static_archives']
         return os.path.join(path, self.id_data.name + '.rib')
 
