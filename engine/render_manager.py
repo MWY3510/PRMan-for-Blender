@@ -28,7 +28,11 @@ import os.path
 import bpy
 import time
 import traceback
-from ..util.util import get_addon_prefs, init_env, user_path, get_path_list_converted
+import subprocess
+import asyncio
+
+from ..util.util import get_addon_prefs, init_env, user_path, get_path_list_converted, find_it_path
+from .dspy_server import DisplayServer
 
 PRMAN_INITED = False
 
@@ -55,14 +59,13 @@ class RenderManager(object):
         elif engine and engine.is_preview:
             self.display_driver = 'openexr'
         else:
-            self.display_driver = 'openexr'
-            #self.display_driver = scene.renderman.render_into
+            self.display_driver = scene.renderman.render_into
 
         # pass addon prefs to init_envs
         init_env()
 
         self.is_preview = self.engine.is_preview if engine else False
-        self.rm = scene.renderman
+        self.scene_rm = scene.renderman
         self.initialize_paths(scene)
         self.external_render = external_render
         self.is_interactive = is_interactive
@@ -108,7 +111,7 @@ class RenderManager(object):
 
     def initialize_paths(self, scene):
         ''' Expands all the output paths for this pass and makes dirs for outputs '''
-        rm = self.rm
+        rm = self.scene_rm
         addon_prefs = get_addon_prefs()
 
         self.paths = {}
@@ -163,26 +166,99 @@ class RenderManager(object):
         ''' For preview renders, simply render and load exr to blender swatch '''
         pass
 
-    def render(self, engine):
+    def render(self):
         ''' Start the PRMan render process, and if rendering to Blender, setup display driver server 
             Also reports status
         '''
-        pass
+        base_dir = self.paths['scene_output_dir']
+        loop = asyncio.new_event_loop()
+            
+        if self.display_driver == 'it':
+            it_path = find_it_path()
+            if not it_path:
+                self.engine.report({"ERROR"},
+                              "Could not find 'it'. Check your RenderMan installation.")
+            else:
+                environ = os.environ.copy()
+                subprocess.Popen([it_path], env=environ, shell=True)
+        elif self.display_driver == 'socket':
+            driver_socket_port = 55557
+            render = self.scene.render    
+            os.environ['DSPYSOCKET_PORT'] = str(driver_socket_port)
+            server = DisplayServer(self.engine, driver_socket_port, prman)
+            server.start(loop)
+
+        async def check_status():
+            started = False
+            pct = 0
+            # loop while rendering has started and pct returned to 0
+            while True:
+                await asyncio.sleep(.01)
+                if started and pct == 0:
+                    break
+                self.engine.update_progress(pct/100)
+                if self.engine.test_break():
+                    self.ri.ArchiveRecord(
+                        "structure", self.ri.STREAMMARKER + "END")
+                    prman.RicFlush("END", 0, self.ri.SUSPENDRENDERING)
+                    loop.stop()
+                    break
+                pct = prman.RicGetProgress()
+                if not started and pct > 0:
+                    started = True
+            
+            if self.display_driver == 'it':
+                loop.stop()
+        
+        try:
+            prman.Init()
+            self.ri = prman.Ri()
+            
+            self.ri.Begin("launch:prman? -ctrl $ctrlin $ctrlout -t:-1")
+            self.frame_rib()
+            
+            print('about to loop')
+            asyncio.set_event_loop(loop)
+            asyncio.Task(check_status())
+            loop.run_forever()
+            print('done loop')
+            self.engine.update_progress(1)
+            
+            if self.display_driver == 'socket':
+                server.stop(loop)
+            
+            self.ri.End()
+            del self.ri
+            prman.Cleanup()
+
+        except Exception as err:
+            if self.display_driver == 'socket':
+                server.stop(loop)
+            self.ri = None
+            prman.Cleanup()
+            self.engine.report({'ERROR'}, 'Rib gen error: ' + traceback.format_exc())
 
     def is_prman_running(self):
         ''' Uses Rix interfaces to get progress on running IPR or render '''
         return prman.RicGetProgress() < 100
 
     def gen_rib(self):
-        ''' Does all the caching nescessary for generating a render rib, first caches motion blur 
-            items, then outputs geometry caches, and also the frame rib.
+        ''' sets up for rib generation
         '''
         time_start = time.time()
         rib_options = {"string format": "ascii", "string asciistyle": "indented,wide"}
         self.ri.Option("rib", rib_options)
+        self.cache_archives()
+        #self.frame_rib()
+        if self.engine:
+            self.engine.report({"INFO"}, "RIB generation took %s" % str(time.time() - time_start))
 
+    def cache_archives(self, clear_motion=False):
+        ''' Does all the caching nescessary for generating a render rib, first caches motion blur 
+            items, then outputs geometry caches,
+        '''
         # cache motion first and write out data archives
-        self.rm.cache_motion(self.ri, self)
+        self.scene_rm.cache_motion(self.ri, self)
         for ob in self.scene.objects:
             items = ob.renderman.get_data_items()
             if items:
@@ -198,21 +274,19 @@ class RenderManager(object):
                         self.engine.report({'ERROR'}, 
                             'Rib gen error object %s data %s: ' % (ob.name, data.name) + 
                             traceback.format_exc())
-        self.rm.clear_motion()
+        
+        if clear_motion:
+            self.scene_rm.clear_motion()
 
-        self.ri.Begin(self.paths['frame_rib'])
-        self.rm.to_rib(self.ri, paths=self.paths, display_driver=self.display_driver)
-        self.ri.End()
-
-        self.rm.clear_motion()
-
-        if self.engine:
-            self.engine.report({"INFO"}, "RIB generation took %s" % str(time.time() - time_start))
+    def frame_rib(self):
+        ''' Do the Frame_rib '''
+        self.scene_rm.to_rib(self.ri, paths=self.paths, display_driver=self.display_driver)
+        self.scene_rm.clear_motion()
 
     def gen_preview_rib(self):
         ''' generates a preview rib file '''
         self.ri.Begin(self.paths['frame_rib'])
-        self.rm.to_rib(self.ri, preview=True)
+        self.scene_rm.to_rib(self.ri, preview=True)
         self.ri.End()
 
     

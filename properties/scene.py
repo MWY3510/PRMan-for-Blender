@@ -30,6 +30,14 @@ class RendermanSceneSettings(RendermanBasePropertyGroup):
         as well as the methods for caching any data under it'''
     ### scene properties ###
 
+    # display settings
+    render_into = EnumProperty(
+        name="Render to",
+        description="Render to blender or external framebuffer",
+        items=[('socket', 'Blender', 'Render to the Image Editor'),
+               ('it', 'it', 'External framebuffer display (must have RMS installed)')],
+        default='socket')
+
     # sampling
     pixel_variance = FloatProperty(
         name="Pixel Variance",
@@ -254,18 +262,20 @@ class RendermanSceneSettings(RendermanBasePropertyGroup):
         # self.export_integrator(ri)
 
         ri.FrameBegin(scene.frame_current)
-
+        ri.Integrator("PxrDefault", 'inter', {})
+        ri.Hider("raytrace", {'int minsamples': 128, 'int maxsamples': 128})
+        ri.Format(960, 540, 1)
         # self.export_render_settings(ri)
         #export_default_bxdf(ri, "default")
         #export_materials_archive(ri, rpass, scene)
 
         # each render layer gets it's own display and world rib
         for render_layer in scene.render.layers:
+            self.export_displays_for_layer(ri, render_layer, **kwargs)
             ri.WorldBegin()
             # if scene.world:
             #    scene.world.renderman.to_rib(ri, **kwargs)
 
-            self.export_displays_for_layer(ri, render_layer, **kwargs)
             kwargs['render_layer'] = render_layer
             for ob in scene.objects:
                 if not ob.parent:
