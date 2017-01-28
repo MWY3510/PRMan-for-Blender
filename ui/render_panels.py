@@ -77,7 +77,7 @@ class RENDER_PT_renderman_motion_blur(PRManPanel, Panel):
         row.prop(rm, "shutter_efficiency_close")
         layout.separator()
         col = layout.column()
-        col.prop(item, "show_advanced", icon=icon,
+        col.prop(rm, "show_advanced", icon=icon,
                  text="Advanced Shutter Timing", icon_only=True, emboss=False)
         if rm.advanced_timing:
             row = col.row(align=True)
