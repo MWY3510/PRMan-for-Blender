@@ -42,5 +42,5 @@ class RendermanRenderEngine(bpy.types.RenderEngine):
             self.render_pass.ipr_update(context.scene)
 
     def view_draw(self, context=None):
-        ''' Tell the Render Pass to continually update display until further notice ''' 
+        ''' Tell the Render Pass to continually update display until further notice '''
         self.render_pass.ipr_draw_view(self)

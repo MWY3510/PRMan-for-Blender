@@ -25,6 +25,15 @@
 
 """ Base module which loads the sub components and sets up app handlers """
 
+import bpy
+import importlib as imp
+
+# list of modules to import to register.  Don't need to register util
+SUBMODULES = ['engine', 'properties', 'preferences', 'ui']
+
+for module in SUBMODULES:
+    imp.import_module('.' + module, package=__name__)
+
 bl_info = {
     "name": "RenderMan For Blender",
     "author": "Brian Savery",
@@ -35,14 +44,6 @@ bl_info = {
     "warning": "",
     "category": "Render"}
 
-# list of modules to import to register.  Don't need to register util
-#SUBMODULES = ['engine', 'operators', 'preferences', 'properties', 'ui']
-SUBMODULES = ['engine', 'properties', 'preferences', 'ui']
-
-import bpy
-import importlib as imp
-for module in SUBMODULES:
-    imp.import_module('.' + module, package=__name__)
 
 # register the module and subclasses
 def register():

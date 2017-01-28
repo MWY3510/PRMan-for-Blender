@@ -32,7 +32,7 @@ import subprocess
 import asyncio
 
 from ..util.util import get_addon_prefs, init_env, user_path, get_path_list_converted, find_it_path
-from .dspy_server import DisplayServer
+#from .dspy_server import DisplayServer
 
 PRMAN_INITED = False
 
