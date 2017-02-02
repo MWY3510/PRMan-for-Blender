@@ -1,0 +1,312 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module PRMan-for-Blender.engine.render_engine</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="PRMan-for-Blender.html"><font color="#ffffff">PRMan-for-Blender</font></a>.<a href="PRMan-for-Blender.engine.html"><font color="#ffffff">engine</font></a>.render_engine</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/ryan/Documents/Git/PRMan-for-Blender/engine/render_engine.py">/home/ryan/Documents/Git/PRMan-for-Blender/engine/render_engine.py</a></font></td></tr></table>
+    <p></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="bpy.html">bpy</a><br>
+</td><td width="25%" valign=top></td><td width="25%" valign=top></td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="bpy_types.html#RenderEngine">bpy_types.RenderEngine</a>(builtins.bpy_struct)
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="PRMan-for-Blender.engine.render_engine.html#RendermanRenderEngine">RendermanRenderEngine</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="RendermanRenderEngine">class <strong>RendermanRenderEngine</strong></a>(<a href="bpy_types.html#RenderEngine">bpy_types.RenderEngine</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="bpy_types.html#RenderEngine">RenderEngine</a>&nbsp;subclass&nbsp;which&nbsp;gives&nbsp;the&nbsp;hook&nbsp;to&nbsp;Blender&nbsp;that&nbsp;allows&nbsp;you&nbsp;to&nbsp;render.<br>
+All&nbsp;the&nbsp;methods&nbsp;here&nbsp;are&nbsp;callbacks&nbsp;to&nbsp;blender.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="PRMan-for-Blender.engine.render_engine.html#RendermanRenderEngine">RendermanRenderEngine</a></dd>
+<dd><a href="bpy_types.html#RenderEngine">bpy_types.RenderEngine</a></dd>
+<dd>builtins.bpy_struct</dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="RendermanRenderEngine-__del__"><strong>__del__</strong></a>(self)</dt><dd><tt>Delete&nbsp;the&nbsp;<a href="bpy_types.html#RenderEngine">RenderEngine</a>&nbsp;and&nbsp;render&nbsp;pass</tt></dd></dl>
+
+<dl><dt><a name="RendermanRenderEngine-__init__"><strong>__init__</strong></a>(self)</dt><dd><tt>Create&nbsp;the&nbsp;Engine&nbsp;and&nbsp;a&nbsp;renderpass</tt></dd></dl>
+
+<dl><dt><a name="RendermanRenderEngine-render"><strong>render</strong></a>(self, scene)</dt><dd><tt>Start&nbsp;the&nbsp;render</tt></dd></dl>
+
+<dl><dt><a name="RendermanRenderEngine-update"><strong>update</strong></a>(self, data, scene)</dt><dd><tt>Update&nbsp;the&nbsp;render&nbsp;pass&nbsp;to&nbsp;the&nbsp;current&nbsp;scene,&nbsp;and&nbsp;tell&nbsp;it&nbsp;to&nbsp;write&nbsp;rib&nbsp;out</tt></dd></dl>
+
+<dl><dt><a name="RendermanRenderEngine-view_draw"><strong>view_draw</strong></a>(self, context=None)</dt><dd><tt>Tell&nbsp;the&nbsp;Render&nbsp;Pass&nbsp;to&nbsp;continually&nbsp;update&nbsp;display&nbsp;until&nbsp;further&nbsp;notice</tt></dd></dl>
+
+<dl><dt><a name="RendermanRenderEngine-view_update"><strong>view_update</strong></a>(self, context=None)</dt><dd><tt>If&nbsp;this&nbsp;is&nbsp;a&nbsp;viewport&nbsp;render&nbsp;update&nbsp;any&nbsp;data&nbsp;via&nbsp;the&nbsp;render&nbsp;pass.</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>bl_idname</strong> = 'PRMAN_RENDER'</dl>
+
+<dl><dt><strong>bl_label</strong> = 'RenderMan Render'</dl>
+
+<dl><dt><strong>bl_use_preview</strong> = True</dl>
+
+<dl><dt><strong>bl_use_save_buffers</strong> = True</dl>
+
+<hr>
+Data and other attributes inherited from <a href="bpy_types.html#RenderEngine">bpy_types.RenderEngine</a>:<br>
+<dl><dt><strong>bl_rna</strong> = &lt;bpy_struct, Struct("RenderEngine")&gt;</dl>
+
+<hr>
+Methods inherited from builtins.bpy_struct:<br>
+<dl><dt><a name="RendermanRenderEngine-__contains__"><strong>__contains__</strong></a>(self, key, /)</dt><dd><tt>Return&nbsp;key&nbsp;in&nbsp;self.</tt></dd></dl>
+
+<dl><dt><a name="RendermanRenderEngine-__delattr__"><strong>__delattr__</strong></a>(self, name, /)</dt><dd><tt>Implement&nbsp;delattr(self,&nbsp;name).</tt></dd></dl>
+
+<dl><dt><a name="RendermanRenderEngine-__delitem__"><strong>__delitem__</strong></a>(self, key, /)</dt><dd><tt>Delete&nbsp;self[key].</tt></dd></dl>
+
+<dl><dt><a name="RendermanRenderEngine-__dir__"><strong>__dir__</strong></a>(...)</dt><dd><tt><a href="#RendermanRenderEngine-__dir__">__dir__</a>()&nbsp;-&gt;&nbsp;list<br>
+default&nbsp;dir()&nbsp;implementation</tt></dd></dl>
+
+<dl><dt><a name="RendermanRenderEngine-__eq__"><strong>__eq__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self==value.</tt></dd></dl>
+
+<dl><dt><a name="RendermanRenderEngine-__ge__"><strong>__ge__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&gt;=value.</tt></dd></dl>
+
+<dl><dt><a name="RendermanRenderEngine-__getattribute__"><strong>__getattribute__</strong></a>(self, name, /)</dt><dd><tt>Return&nbsp;getattr(self,&nbsp;name).</tt></dd></dl>
+
+<dl><dt><a name="RendermanRenderEngine-__getitem__"><strong>__getitem__</strong></a>(self, key, /)</dt><dd><tt>Return&nbsp;self[key].</tt></dd></dl>
+
+<dl><dt><a name="RendermanRenderEngine-__gt__"><strong>__gt__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&gt;value.</tt></dd></dl>
+
+<dl><dt><a name="RendermanRenderEngine-__hash__"><strong>__hash__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;hash(self).</tt></dd></dl>
+
+<dl><dt><a name="RendermanRenderEngine-__le__"><strong>__le__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&lt;=value.</tt></dd></dl>
+
+<dl><dt><a name="RendermanRenderEngine-__lt__"><strong>__lt__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&lt;value.</tt></dd></dl>
+
+<dl><dt><a name="RendermanRenderEngine-__ne__"><strong>__ne__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self!=value.</tt></dd></dl>
+
+<dl><dt><a name="RendermanRenderEngine-__new__"><strong>__new__</strong></a>(*args, **kwargs)<font color="#909090"><font face="helvetica, arial"> from <a href="builtins.html#type">builtins.type</a></font></font></dt><dd><tt>Create&nbsp;and&nbsp;return&nbsp;a&nbsp;new&nbsp;object.&nbsp;&nbsp;See&nbsp;help(type)&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<dl><dt><a name="RendermanRenderEngine-__repr__"><strong>__repr__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;repr(self).</tt></dd></dl>
+
+<dl><dt><a name="RendermanRenderEngine-__setattr__"><strong>__setattr__</strong></a>(self, name, value, /)</dt><dd><tt>Implement&nbsp;setattr(self,&nbsp;name,&nbsp;value).</tt></dd></dl>
+
+<dl><dt><a name="RendermanRenderEngine-__setitem__"><strong>__setitem__</strong></a>(self, key, value, /)</dt><dd><tt>Set&nbsp;self[key]&nbsp;to&nbsp;value.</tt></dd></dl>
+
+<dl><dt><a name="RendermanRenderEngine-__str__"><strong>__str__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;str(self).</tt></dd></dl>
+
+<dl><dt><a name="RendermanRenderEngine-as_pointer"><strong>as_pointer</strong></a>(...)</dt><dd><tt>..&nbsp;method::&nbsp;<a href="#RendermanRenderEngine-as_pointer">as_pointer</a>()<br>
+&nbsp;<br>
+Returns&nbsp;the&nbsp;memory&nbsp;address&nbsp;which&nbsp;holds&nbsp;a&nbsp;pointer&nbsp;to&nbsp;blenders&nbsp;internal&nbsp;data<br>
+&nbsp;<br>
+:return:&nbsp;int&nbsp;(memory&nbsp;address).<br>
+:rtype:&nbsp;int<br>
+&nbsp;<br>
+..&nbsp;note::&nbsp;This&nbsp;is&nbsp;intended&nbsp;only&nbsp;for&nbsp;advanced&nbsp;script&nbsp;writers&nbsp;who&nbsp;need&nbsp;to<br>
+&nbsp;&nbsp;&nbsp;pass&nbsp;blender&nbsp;data&nbsp;to&nbsp;their&nbsp;own&nbsp;C/Python&nbsp;modules.</tt></dd></dl>
+
+<dl><dt><a name="RendermanRenderEngine-driver_add"><strong>driver_add</strong></a>(...)</dt><dd><tt>..&nbsp;method::&nbsp;<a href="#RendermanRenderEngine-driver_add">driver_add</a>(path,&nbsp;index=-1)<br>
+&nbsp;<br>
+Adds&nbsp;driver(s)&nbsp;to&nbsp;the&nbsp;given&nbsp;property<br>
+&nbsp;<br>
+:arg&nbsp;path:&nbsp;path&nbsp;to&nbsp;the&nbsp;property&nbsp;to&nbsp;drive,&nbsp;analogous&nbsp;to&nbsp;the&nbsp;fcurve's&nbsp;data&nbsp;path.<br>
+:type&nbsp;path:&nbsp;string<br>
+:arg&nbsp;index:&nbsp;array&nbsp;index&nbsp;of&nbsp;the&nbsp;property&nbsp;drive.&nbsp;Defaults&nbsp;to&nbsp;-1&nbsp;for&nbsp;all&nbsp;indices&nbsp;or&nbsp;a&nbsp;single&nbsp;channel&nbsp;if&nbsp;the&nbsp;property&nbsp;is&nbsp;not&nbsp;an&nbsp;array.<br>
+:type&nbsp;index:&nbsp;int<br>
+:return:&nbsp;The&nbsp;driver(s)&nbsp;added.<br>
+:rtype:&nbsp;:class:`bpy.types.FCurve`&nbsp;or&nbsp;list&nbsp;if&nbsp;index&nbsp;is&nbsp;-1&nbsp;with&nbsp;an&nbsp;array&nbsp;property.</tt></dd></dl>
+
+<dl><dt><a name="RendermanRenderEngine-driver_remove"><strong>driver_remove</strong></a>(...)</dt><dd><tt>..&nbsp;method::&nbsp;<a href="#RendermanRenderEngine-driver_remove">driver_remove</a>(path,&nbsp;index=-1)<br>
+&nbsp;<br>
+Remove&nbsp;driver(s)&nbsp;from&nbsp;the&nbsp;given&nbsp;property<br>
+&nbsp;<br>
+:arg&nbsp;path:&nbsp;path&nbsp;to&nbsp;the&nbsp;property&nbsp;to&nbsp;drive,&nbsp;analogous&nbsp;to&nbsp;the&nbsp;fcurve's&nbsp;data&nbsp;path.<br>
+:type&nbsp;path:&nbsp;string<br>
+:arg&nbsp;index:&nbsp;array&nbsp;index&nbsp;of&nbsp;the&nbsp;property&nbsp;drive.&nbsp;Defaults&nbsp;to&nbsp;-1&nbsp;for&nbsp;all&nbsp;indices&nbsp;or&nbsp;a&nbsp;single&nbsp;channel&nbsp;if&nbsp;the&nbsp;property&nbsp;is&nbsp;not&nbsp;an&nbsp;array.<br>
+:type&nbsp;index:&nbsp;int<br>
+:return:&nbsp;Success&nbsp;of&nbsp;driver&nbsp;removal.<br>
+:rtype:&nbsp;boolean</tt></dd></dl>
+
+<dl><dt><a name="RendermanRenderEngine-get"><strong>get</strong></a>(...)</dt><dd><tt>..&nbsp;method::&nbsp;<a href="#RendermanRenderEngine-get">get</a>(key,&nbsp;default=None)<br>
+&nbsp;<br>
+Returns&nbsp;the&nbsp;value&nbsp;of&nbsp;the&nbsp;custom&nbsp;property&nbsp;assigned&nbsp;to&nbsp;key&nbsp;or&nbsp;default<br>
+when&nbsp;not&nbsp;found&nbsp;(matches&nbsp;pythons&nbsp;dictionary&nbsp;function&nbsp;of&nbsp;the&nbsp;same&nbsp;name).<br>
+&nbsp;<br>
+:arg&nbsp;key:&nbsp;The&nbsp;key&nbsp;associated&nbsp;with&nbsp;the&nbsp;custom&nbsp;property.<br>
+:type&nbsp;key:&nbsp;string<br>
+:arg&nbsp;default:&nbsp;Optional&nbsp;argument&nbsp;for&nbsp;the&nbsp;value&nbsp;to&nbsp;return&nbsp;if<br>
+&nbsp;&nbsp;&nbsp;*key*&nbsp;is&nbsp;not&nbsp;found.<br>
+:type&nbsp;default:&nbsp;Undefined<br>
+&nbsp;<br>
+..&nbsp;note::<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;Only&nbsp;:class:`bpy.types.ID`,&nbsp;:class:`bpy.types.Bone`&nbsp;and&nbsp;<br>
+&nbsp;&nbsp;&nbsp;:class:`bpy.types.PoseBone`&nbsp;classes&nbsp;support&nbsp;custom&nbsp;properties.</tt></dd></dl>
+
+<dl><dt><a name="RendermanRenderEngine-is_property_hidden"><strong>is_property_hidden</strong></a>(...)</dt><dd><tt>..&nbsp;method::&nbsp;<a href="#RendermanRenderEngine-is_property_hidden">is_property_hidden</a>(property)<br>
+&nbsp;<br>
+Check&nbsp;if&nbsp;a&nbsp;property&nbsp;is&nbsp;hidden.<br>
+&nbsp;<br>
+:return:&nbsp;True&nbsp;when&nbsp;the&nbsp;property&nbsp;is&nbsp;hidden.<br>
+:rtype:&nbsp;boolean</tt></dd></dl>
+
+<dl><dt><a name="RendermanRenderEngine-is_property_readonly"><strong>is_property_readonly</strong></a>(...)</dt><dd><tt>..&nbsp;method::&nbsp;<a href="#RendermanRenderEngine-is_property_readonly">is_property_readonly</a>(property)<br>
+&nbsp;<br>
+Check&nbsp;if&nbsp;a&nbsp;property&nbsp;is&nbsp;readonly.<br>
+&nbsp;<br>
+:return:&nbsp;True&nbsp;when&nbsp;the&nbsp;property&nbsp;is&nbsp;readonly&nbsp;(not&nbsp;writable).<br>
+:rtype:&nbsp;boolean</tt></dd></dl>
+
+<dl><dt><a name="RendermanRenderEngine-is_property_set"><strong>is_property_set</strong></a>(...)</dt><dd><tt>..&nbsp;method::&nbsp;<a href="#RendermanRenderEngine-is_property_set">is_property_set</a>(property)<br>
+&nbsp;<br>
+Check&nbsp;if&nbsp;a&nbsp;property&nbsp;is&nbsp;set,&nbsp;use&nbsp;for&nbsp;testing&nbsp;operator&nbsp;properties.<br>
+&nbsp;<br>
+:return:&nbsp;True&nbsp;when&nbsp;the&nbsp;property&nbsp;has&nbsp;been&nbsp;set.<br>
+:rtype:&nbsp;boolean</tt></dd></dl>
+
+<dl><dt><a name="RendermanRenderEngine-items"><strong>items</strong></a>(...)</dt><dd><tt>..&nbsp;method::&nbsp;<a href="#RendermanRenderEngine-items">items</a>()<br>
+&nbsp;<br>
+Returns&nbsp;the&nbsp;items&nbsp;of&nbsp;this&nbsp;objects&nbsp;custom&nbsp;properties&nbsp;(matches&nbsp;pythons<br>
+dictionary&nbsp;function&nbsp;of&nbsp;the&nbsp;same&nbsp;name).<br>
+&nbsp;<br>
+:return:&nbsp;custom&nbsp;property&nbsp;key,&nbsp;value&nbsp;pairs.<br>
+:rtype:&nbsp;list&nbsp;of&nbsp;key,&nbsp;value&nbsp;tuples<br>
+&nbsp;<br>
+..&nbsp;note::<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;Only&nbsp;:class:`bpy.types.ID`,&nbsp;:class:`bpy.types.Bone`&nbsp;and&nbsp;<br>
+&nbsp;&nbsp;&nbsp;:class:`bpy.types.PoseBone`&nbsp;classes&nbsp;support&nbsp;custom&nbsp;properties.</tt></dd></dl>
+
+<dl><dt><a name="RendermanRenderEngine-keyframe_delete"><strong>keyframe_delete</strong></a>(...)</dt><dd><tt>..&nbsp;method::&nbsp;<a href="#RendermanRenderEngine-keyframe_delete">keyframe_delete</a>(data_path,&nbsp;index=-1,&nbsp;frame=bpy.context.scene.frame_current,&nbsp;group="")<br>
+&nbsp;<br>
+Remove&nbsp;a&nbsp;keyframe&nbsp;from&nbsp;this&nbsp;properties&nbsp;fcurve.<br>
+&nbsp;<br>
+:arg&nbsp;data_path:&nbsp;path&nbsp;to&nbsp;the&nbsp;property&nbsp;to&nbsp;remove&nbsp;a&nbsp;key,&nbsp;analogous&nbsp;to&nbsp;the&nbsp;fcurve's&nbsp;data&nbsp;path.<br>
+:type&nbsp;data_path:&nbsp;string<br>
+:arg&nbsp;index:&nbsp;array&nbsp;index&nbsp;of&nbsp;the&nbsp;property&nbsp;to&nbsp;remove&nbsp;a&nbsp;key.&nbsp;Defaults&nbsp;to&nbsp;-1&nbsp;removing&nbsp;all&nbsp;indices&nbsp;or&nbsp;a&nbsp;single&nbsp;channel&nbsp;if&nbsp;the&nbsp;property&nbsp;is&nbsp;not&nbsp;an&nbsp;array.<br>
+:type&nbsp;index:&nbsp;int<br>
+:arg&nbsp;frame:&nbsp;The&nbsp;frame&nbsp;on&nbsp;which&nbsp;the&nbsp;keyframe&nbsp;is&nbsp;deleted,&nbsp;defaulting&nbsp;to&nbsp;the&nbsp;current&nbsp;frame.<br>
+:type&nbsp;frame:&nbsp;float<br>
+:arg&nbsp;group:&nbsp;The&nbsp;name&nbsp;of&nbsp;the&nbsp;group&nbsp;the&nbsp;F-Curve&nbsp;should&nbsp;be&nbsp;added&nbsp;to&nbsp;if&nbsp;it&nbsp;doesn't&nbsp;exist&nbsp;yet.<br>
+:type&nbsp;group:&nbsp;str<br>
+:return:&nbsp;Success&nbsp;of&nbsp;keyframe&nbsp;deleation.<br>
+:rtype:&nbsp;boolean</tt></dd></dl>
+
+<dl><dt><a name="RendermanRenderEngine-keyframe_insert"><strong>keyframe_insert</strong></a>(...)</dt><dd><tt>..&nbsp;method::&nbsp;<a href="#RendermanRenderEngine-keyframe_insert">keyframe_insert</a>(data_path,&nbsp;index=-1,&nbsp;frame=bpy.context.scene.frame_current,&nbsp;group="")<br>
+&nbsp;<br>
+Insert&nbsp;a&nbsp;keyframe&nbsp;on&nbsp;the&nbsp;property&nbsp;given,&nbsp;adding&nbsp;fcurves&nbsp;and&nbsp;animation&nbsp;data&nbsp;when&nbsp;necessary.<br>
+&nbsp;<br>
+:arg&nbsp;data_path:&nbsp;path&nbsp;to&nbsp;the&nbsp;property&nbsp;to&nbsp;key,&nbsp;analogous&nbsp;to&nbsp;the&nbsp;fcurve's&nbsp;data&nbsp;path.<br>
+:type&nbsp;data_path:&nbsp;string<br>
+:arg&nbsp;index:&nbsp;array&nbsp;index&nbsp;of&nbsp;the&nbsp;property&nbsp;to&nbsp;key.<br>
+&nbsp;&nbsp;&nbsp;Defaults&nbsp;to&nbsp;-1&nbsp;which&nbsp;will&nbsp;key&nbsp;all&nbsp;indices&nbsp;or&nbsp;a&nbsp;single&nbsp;channel&nbsp;if&nbsp;the&nbsp;property&nbsp;is&nbsp;not&nbsp;an&nbsp;array.<br>
+:type&nbsp;index:&nbsp;int<br>
+:arg&nbsp;frame:&nbsp;The&nbsp;frame&nbsp;on&nbsp;which&nbsp;the&nbsp;keyframe&nbsp;is&nbsp;inserted,&nbsp;defaulting&nbsp;to&nbsp;the&nbsp;current&nbsp;frame.<br>
+:type&nbsp;frame:&nbsp;float<br>
+:arg&nbsp;group:&nbsp;The&nbsp;name&nbsp;of&nbsp;the&nbsp;group&nbsp;the&nbsp;F-Curve&nbsp;should&nbsp;be&nbsp;added&nbsp;to&nbsp;if&nbsp;it&nbsp;doesn't&nbsp;exist&nbsp;yet.<br>
+:type&nbsp;group:&nbsp;str<br>
+:arg&nbsp;options:&nbsp;Optional&nbsp;flags:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;-&nbsp;``INSERTKEY_NEEDED``&nbsp;Only&nbsp;insert&nbsp;keyframes&nbsp;where&nbsp;they're&nbsp;needed&nbsp;in&nbsp;the&nbsp;relevant&nbsp;F-Curves.<br>
+&nbsp;&nbsp;&nbsp;-&nbsp;``INSERTKEY_VISUAL``&nbsp;Insert&nbsp;keyframes&nbsp;based&nbsp;on&nbsp;'visual&nbsp;transforms'.<br>
+&nbsp;&nbsp;&nbsp;-&nbsp;``INSERTKEY_XYZ_TO_RGB``&nbsp;Color&nbsp;for&nbsp;newly&nbsp;added&nbsp;transformation&nbsp;F-Curves&nbsp;(Location,&nbsp;Rotation,&nbsp;Scale)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;and&nbsp;also&nbsp;Color&nbsp;is&nbsp;based&nbsp;on&nbsp;the&nbsp;transform&nbsp;axis.<br>
+:type&nbsp;flag:&nbsp;set<br>
+:return:&nbsp;Success&nbsp;of&nbsp;keyframe&nbsp;insertion.<br>
+:rtype:&nbsp;boolean</tt></dd></dl>
+
+<dl><dt><a name="RendermanRenderEngine-keys"><strong>keys</strong></a>(...)</dt><dd><tt>..&nbsp;method::&nbsp;<a href="#RendermanRenderEngine-keys">keys</a>()<br>
+&nbsp;<br>
+Returns&nbsp;the&nbsp;keys&nbsp;of&nbsp;this&nbsp;objects&nbsp;custom&nbsp;properties&nbsp;(matches&nbsp;pythons<br>
+dictionary&nbsp;function&nbsp;of&nbsp;the&nbsp;same&nbsp;name).<br>
+&nbsp;<br>
+:return:&nbsp;custom&nbsp;property&nbsp;keys.<br>
+:rtype:&nbsp;list&nbsp;of&nbsp;strings<br>
+&nbsp;<br>
+..&nbsp;note::<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;Only&nbsp;:class:`bpy.types.ID`,&nbsp;:class:`bpy.types.Bone`&nbsp;and&nbsp;<br>
+&nbsp;&nbsp;&nbsp;:class:`bpy.types.PoseBone`&nbsp;classes&nbsp;support&nbsp;custom&nbsp;properties.</tt></dd></dl>
+
+<dl><dt><a name="RendermanRenderEngine-path_from_id"><strong>path_from_id</strong></a>(...)</dt><dd><tt>..&nbsp;method::&nbsp;<a href="#RendermanRenderEngine-path_from_id">path_from_id</a>(property="")<br>
+&nbsp;<br>
+Returns&nbsp;the&nbsp;data&nbsp;path&nbsp;from&nbsp;the&nbsp;ID&nbsp;to&nbsp;this&nbsp;object&nbsp;(string).<br>
+&nbsp;<br>
+:arg&nbsp;property:&nbsp;Optional&nbsp;property&nbsp;name&nbsp;which&nbsp;can&nbsp;be&nbsp;used&nbsp;if&nbsp;the&nbsp;path&nbsp;is<br>
+&nbsp;&nbsp;&nbsp;to&nbsp;a&nbsp;property&nbsp;of&nbsp;this&nbsp;object.<br>
+:type&nbsp;property:&nbsp;string<br>
+:return:&nbsp;The&nbsp;path&nbsp;from&nbsp;:class:`bpy.types.bpy_struct.id_data`<br>
+&nbsp;&nbsp;&nbsp;to&nbsp;this&nbsp;struct&nbsp;and&nbsp;property&nbsp;(when&nbsp;given).<br>
+:rtype:&nbsp;str</tt></dd></dl>
+
+<dl><dt><a name="RendermanRenderEngine-path_resolve"><strong>path_resolve</strong></a>(...)</dt><dd><tt>..&nbsp;method::&nbsp;<a href="#RendermanRenderEngine-path_resolve">path_resolve</a>(path,&nbsp;coerce=True)<br>
+&nbsp;<br>
+Returns&nbsp;the&nbsp;property&nbsp;from&nbsp;the&nbsp;path,&nbsp;raise&nbsp;an&nbsp;exception&nbsp;when&nbsp;not&nbsp;found.<br>
+&nbsp;<br>
+:arg&nbsp;path:&nbsp;path&nbsp;which&nbsp;this&nbsp;property&nbsp;resolves.<br>
+:type&nbsp;path:&nbsp;string<br>
+:arg&nbsp;coerce:&nbsp;optional&nbsp;argument,&nbsp;when&nbsp;True,&nbsp;the&nbsp;property&nbsp;will&nbsp;be&nbsp;converted<br>
+&nbsp;&nbsp;&nbsp;into&nbsp;its&nbsp;python&nbsp;representation.<br>
+:type&nbsp;coerce:&nbsp;boolean</tt></dd></dl>
+
+<dl><dt><a name="RendermanRenderEngine-property_unset"><strong>property_unset</strong></a>(...)</dt><dd><tt>..&nbsp;method::&nbsp;<a href="#RendermanRenderEngine-property_unset">property_unset</a>(property)<br>
+&nbsp;<br>
+Unset&nbsp;a&nbsp;property,&nbsp;will&nbsp;use&nbsp;default&nbsp;value&nbsp;afterward.</tt></dd></dl>
+
+<dl><dt><a name="RendermanRenderEngine-type_recast"><strong>type_recast</strong></a>(...)</dt><dd><tt>..&nbsp;method::&nbsp;<a href="#RendermanRenderEngine-type_recast">type_recast</a>()<br>
+&nbsp;<br>
+Return&nbsp;a&nbsp;new&nbsp;instance,&nbsp;this&nbsp;is&nbsp;needed&nbsp;because&nbsp;types<br>
+such&nbsp;as&nbsp;textures&nbsp;can&nbsp;be&nbsp;changed&nbsp;at&nbsp;runtime.<br>
+&nbsp;<br>
+:return:&nbsp;a&nbsp;new&nbsp;instance&nbsp;of&nbsp;this&nbsp;object&nbsp;with&nbsp;the&nbsp;type&nbsp;initialized&nbsp;again.<br>
+:rtype:&nbsp;subclass&nbsp;of&nbsp;:class:`bpy.types.bpy_struct`</tt></dd></dl>
+
+<dl><dt><a name="RendermanRenderEngine-values"><strong>values</strong></a>(...)</dt><dd><tt>..&nbsp;method::&nbsp;<a href="#RendermanRenderEngine-values">values</a>()<br>
+&nbsp;<br>
+Returns&nbsp;the&nbsp;values&nbsp;of&nbsp;this&nbsp;objects&nbsp;custom&nbsp;properties&nbsp;(matches&nbsp;pythons<br>
+dictionary&nbsp;function&nbsp;of&nbsp;the&nbsp;same&nbsp;name).<br>
+&nbsp;<br>
+:return:&nbsp;custom&nbsp;property&nbsp;values.<br>
+:rtype:&nbsp;list<br>
+&nbsp;<br>
+..&nbsp;note::<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;Only&nbsp;:class:`bpy.types.ID`,&nbsp;:class:`bpy.types.Bone`&nbsp;and&nbsp;<br>
+&nbsp;&nbsp;&nbsp;:class:`bpy.types.PoseBone`&nbsp;classes&nbsp;support&nbsp;custom&nbsp;properties.</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from builtins.bpy_struct:<br>
+<dl><dt><strong>id_data</strong></dt>
+<dd><tt>The&nbsp;:class:`bpy.types.ID`&nbsp;object&nbsp;this&nbsp;datablock&nbsp;is&nbsp;from&nbsp;or&nbsp;None,&nbsp;(not&nbsp;available&nbsp;for&nbsp;all&nbsp;data&nbsp;types)</tt></dd>
+</dl>
+</td></tr></table></td></tr></table>
+</body></html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module PRMan-for-Blender.engine.render_manager</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="PRMan-for-Blender.html"><font color="#ffffff">PRMan-for-Blender</font></a>.<a href="PRMan-for-Blender.engine.html"><font color="#ffffff">engine</font></a>.render_manager</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/ryan/Documents/Git/PRMan-for-Blender/engine/render_manager.py">/home/ryan/Documents/Git/PRMan-for-Blender/engine/render_manager.py</a></font></td></tr></table>
+    <p><tt>#&nbsp;#####&nbsp;BEGIN&nbsp;MIT&nbsp;LICENSE&nbsp;BLOCK&nbsp;#####<br>
+#<br>
+#&nbsp;Copyright&nbsp;(c)&nbsp;2015&nbsp;Brian&nbsp;Savery<br>
+#<br>
+#&nbsp;Permission&nbsp;is&nbsp;hereby&nbsp;granted,&nbsp;free&nbsp;of&nbsp;charge,&nbsp;to&nbsp;any&nbsp;person&nbsp;obtaining&nbsp;a&nbsp;copy<br>
+#&nbsp;of&nbsp;this&nbsp;software&nbsp;and&nbsp;associated&nbsp;documentation&nbsp;files&nbsp;(the&nbsp;"Software"),&nbsp;to&nbsp;deal<br>
+#&nbsp;in&nbsp;the&nbsp;Software&nbsp;without&nbsp;restriction,&nbsp;including&nbsp;without&nbsp;limitation&nbsp;the&nbsp;rights<br>
+#&nbsp;to&nbsp;use,&nbsp;copy,&nbsp;modify,&nbsp;merge,&nbsp;publish,&nbsp;distribute,&nbsp;sublicense,&nbsp;and/or&nbsp;sell<br>
+#&nbsp;copies&nbsp;of&nbsp;the&nbsp;Software,&nbsp;and&nbsp;to&nbsp;permit&nbsp;persons&nbsp;to&nbsp;whom&nbsp;the&nbsp;Software&nbsp;is<br>
+#&nbsp;furnished&nbsp;to&nbsp;do&nbsp;so,&nbsp;subject&nbsp;to&nbsp;the&nbsp;following&nbsp;conditions:<br>
+#<br>
+#&nbsp;The&nbsp;above&nbsp;copyright&nbsp;notice&nbsp;and&nbsp;this&nbsp;permission&nbsp;notice&nbsp;shall&nbsp;be&nbsp;included&nbsp;in<br>
+#&nbsp;all&nbsp;copies&nbsp;or&nbsp;substantial&nbsp;portions&nbsp;of&nbsp;the&nbsp;Software.<br>
+#<br>
+#&nbsp;THE&nbsp;SOFTWARE&nbsp;IS&nbsp;PROVIDED&nbsp;"AS&nbsp;IS",&nbsp;WITHOUT&nbsp;WARRANTY&nbsp;OF&nbsp;ANY&nbsp;KIND,&nbsp;EXPRESS&nbsp;OR<br>
+#&nbsp;IMPLIED,&nbsp;INCLUDING&nbsp;BUT&nbsp;NOT&nbsp;LIMITED&nbsp;TO&nbsp;THE&nbsp;WARRANTIES&nbsp;OF&nbsp;MERCHANTABILITY,<br>
+#&nbsp;FITNESS&nbsp;FOR&nbsp;A&nbsp;PARTICULAR&nbsp;PURPOSE&nbsp;AND&nbsp;NONINFRINGEMENT.&nbsp;IN&nbsp;NO&nbsp;EVENT&nbsp;SHALL&nbsp;THE<br>
+#&nbsp;AUTHORS&nbsp;OR&nbsp;COPYRIGHT&nbsp;HOLDERS&nbsp;BE&nbsp;LIABLE&nbsp;FOR&nbsp;ANY&nbsp;CLAIM,&nbsp;DAMAGES&nbsp;OR&nbsp;OTHER<br>
+#&nbsp;LIABILITY,&nbsp;WHETHER&nbsp;IN&nbsp;AN&nbsp;ACTION&nbsp;OF&nbsp;CONTRACT,&nbsp;TORT&nbsp;OR&nbsp;OTHERWISE,&nbsp;ARISING&nbsp;FROM,<br>
+#&nbsp;OUT&nbsp;OF&nbsp;OR&nbsp;IN&nbsp;CONNECTION&nbsp;WITH&nbsp;THE&nbsp;SOFTWARE&nbsp;OR&nbsp;THE&nbsp;USE&nbsp;OR&nbsp;OTHER&nbsp;DEALINGS&nbsp;IN<br>
+#&nbsp;THE&nbsp;SOFTWARE.<br>
+#<br>
+#<br>
+#&nbsp;#####&nbsp;END&nbsp;MIT&nbsp;LICENSE&nbsp;BLOCK&nbsp;#####</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="asyncio.html">asyncio</a><br>
+<a href="bpy.html">bpy</a><br>
+</td><td width="25%" valign=top><a href="os.html">os</a><br>
+<a href="subprocess.html">subprocess</a><br>
+</td><td width="25%" valign=top><a href="time.html">time</a><br>
+<a href="traceback.html">traceback</a><br>
+</td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="builtins.html#object">builtins.object</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="PRMan-for-Blender.engine.render_manager.html#RenderManager">RenderManager</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="RenderManager">class <strong>RenderManager</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#RenderManager">RenderManager</a>&nbsp;takes&nbsp;care&nbsp;of&nbsp;all&nbsp;the&nbsp;actual&nbsp;work&nbsp;for&nbsp;rib&nbsp;gen,<br>
+and&nbsp;has&nbsp;hooks&nbsp;to&nbsp;launch&nbsp;processes<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="RenderManager-__del__"><strong>__del__</strong></a>(self)</dt><dd><tt>Delete&nbsp;and&nbsp;cleanup&nbsp;prman&nbsp;if&nbsp;it's&nbsp;inited.&nbsp;&nbsp;This&nbsp;is&nbsp;so&nbsp;there&nbsp;isn't&nbsp;threading&nbsp;issues.</tt></dd></dl>
+
+<dl><dt><a name="RenderManager-__init__"><strong>__init__</strong></a>(self, scene, engine=None, is_interactive=False, external_render=False)</dt><dd><tt>Instantiate&nbsp;the&nbsp;Render&nbsp;Manager&nbsp;and&nbsp;set&nbsp;the&nbsp;variables&nbsp;needed&nbsp;for&nbsp;it</tt></dd></dl>
+
+<dl><dt><a name="RenderManager-cache_archives"><strong>cache_archives</strong></a>(self, clear_motion=False)</dt><dd><tt>Does&nbsp;all&nbsp;the&nbsp;caching&nbsp;nescessary&nbsp;for&nbsp;generating&nbsp;a&nbsp;render&nbsp;rib,&nbsp;first&nbsp;caches&nbsp;motion&nbsp;blur&nbsp;<br>
+items,&nbsp;then&nbsp;outputs&nbsp;geometry&nbsp;caches,</tt></dd></dl>
+
+<dl><dt><a name="RenderManager-frame_rib"><strong>frame_rib</strong></a>(self)</dt><dd><tt>Do&nbsp;the&nbsp;Frame_rib</tt></dd></dl>
+
+<dl><dt><a name="RenderManager-gen_preview_rib"><strong>gen_preview_rib</strong></a>(self)</dt><dd><tt>generates&nbsp;a&nbsp;preview&nbsp;rib&nbsp;file</tt></dd></dl>
+
+<dl><dt><a name="RenderManager-gen_rib"><strong>gen_rib</strong></a>(self)</dt><dd><tt>sets&nbsp;up&nbsp;for&nbsp;rib&nbsp;generation</tt></dd></dl>
+
+<dl><dt><a name="RenderManager-initialize_paths"><strong>initialize_paths</strong></a>(self, scene)</dt><dd><tt>Expands&nbsp;all&nbsp;the&nbsp;output&nbsp;paths&nbsp;for&nbsp;this&nbsp;pass&nbsp;and&nbsp;makes&nbsp;dirs&nbsp;for&nbsp;outputs</tt></dd></dl>
+
+<dl><dt><a name="RenderManager-is_prman_running"><strong>is_prman_running</strong></a>(self)</dt><dd><tt>Uses&nbsp;Rix&nbsp;interfaces&nbsp;to&nbsp;get&nbsp;progress&nbsp;on&nbsp;running&nbsp;IPR&nbsp;or&nbsp;render</tt></dd></dl>
+
+<dl><dt><a name="RenderManager-preview_render"><strong>preview_render</strong></a>(self, engine)</dt><dd><tt>For&nbsp;preview&nbsp;renders,&nbsp;simply&nbsp;render&nbsp;and&nbsp;load&nbsp;exr&nbsp;to&nbsp;blender&nbsp;swatch</tt></dd></dl>
+
+<dl><dt><a name="RenderManager-render"><strong>render</strong></a>(self)</dt><dd><tt>Start&nbsp;the&nbsp;PRMan&nbsp;render&nbsp;process,&nbsp;and&nbsp;if&nbsp;rendering&nbsp;to&nbsp;Blender,&nbsp;setup&nbsp;display&nbsp;driver&nbsp;server&nbsp;<br>
+Also&nbsp;reports&nbsp;status</tt></dd></dl>
+
+<dl><dt><a name="RenderManager-reset"><strong>reset</strong></a>(self, scene)</dt><dd><tt>Reset&nbsp;prman&nbsp;and&nbsp;reinstantiate&nbsp;it.</tt></dd></dl>
+
+<dl><dt><a name="RenderManager-update_frame_num"><strong>update_frame_num</strong></a>(self, num)</dt><dd><tt>When&nbsp;rendering&nbsp;an&nbsp;animation&nbsp;we&nbsp;may&nbsp;need&nbsp;to&nbsp;use&nbsp;the&nbsp;same&nbsp;rpass&nbsp;to&nbsp;output&nbsp;multiple<br>
+frames.&nbsp;&nbsp;This&nbsp;will&nbsp;reset&nbsp;the&nbsp;frame&nbsp;number&nbsp;and&nbsp;reset&nbsp;paths</tt></dd></dl>
+
+<dl><dt><a name="RenderManager-write_rib"><strong>write_rib</strong></a>(self)</dt><dd><tt>set&nbsp;up&nbsp;ri&nbsp;context&nbsp;and&nbsp;Write&nbsp;out&nbsp;scene&nbsp;rib</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-init_prman"><strong>init_prman</strong></a>()</dt><dd><tt>import&nbsp;prman&nbsp;and&nbsp;mark&nbsp;it&nbsp;as&nbsp;inited.&nbsp;&nbsp;This&nbsp;is&nbsp;important&nbsp;to&nbsp;make&nbsp;sure&nbsp;we&nbsp;are&nbsp;not<br>
+making&nbsp;calls&nbsp;from&nbsp;multiple&nbsp;threads&nbsp;to&nbsp;ri</tt></dd></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>PRMAN_INITED</strong> = False</td></tr></table>
+</body></html>
